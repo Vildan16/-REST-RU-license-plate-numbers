@@ -10,14 +10,14 @@ public class Number {
 	@Id @GeneratedValue
 	private Long id;
 	private char[] letters;
-	private int digits;
+	private String digits;
 	private int region;
 
 	protected Number() {}
 
-	Number(char[] letters, int digits) {
+	Number(char[] letters, char[] digits) {
 		this.letters = letters;
-		this.digits = digits;
+		this.digits = String.copyValueOf(digits);
 		this.region = 116;
 	}
 
@@ -37,11 +37,11 @@ public class Number {
 		this.letters = letters;
 	}
 
-	public int getDigits() {
+	public String getDigits() {
 		return digits;
 	}
 
-	public void setDigits(int digits) {
+	public void setDigits(String digits) {
 		this.digits = digits;
 	}
 
