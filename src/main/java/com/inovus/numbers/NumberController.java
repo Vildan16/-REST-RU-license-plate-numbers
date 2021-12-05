@@ -27,7 +27,7 @@ class NumberController {
 			int c = 0;
 			randomId = (int) (Math.random() * qty);
 			c++;
-			if (c == qty)
+			if (c >= qty)
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Number not found");
 		}
 		currentId = randomId;
