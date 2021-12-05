@@ -13,7 +13,7 @@ import java.util.List;
 class NumberController {
 	private final NumberRepository numberRepository;
 	private long currentId = 0L;
-	private final List<Number> usedNumbers = new ArrayList<>();
+	private final List<Long> usedIds = new ArrayList<>();
 
 	NumberController(NumberRepository numberRepository) {
 		this.numberRepository = numberRepository;
@@ -27,10 +27,10 @@ class NumberController {
 		while (true) {
 			currentId = (int) (Math.random() * qty);
 			number = numberRepository.getById(currentId);
-			if (usedNumbers.size() == qty)
+			if (usedIds.size() == qty)
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No more available numbers");
-			else if (!usedNumbers.contains(number)){
-				usedNumbers.add(number);
+			else if (!usedIds.contains(number.getId())){
+				usedIds.add(number.getId());
 				break;
 			}
 		}
