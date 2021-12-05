@@ -9,16 +9,26 @@ public class Number {
 
 	@Id @GeneratedValue
 	private Long id;
-	private char[] letters;
+	private String letters;
 	private String digits;
-	private int region;
+	private String region;
 
 	protected Number() {}
 
 	Number(char[] letters, char[] digits) {
-		this.letters = letters;
+		this.letters = String.copyValueOf(letters);
 		this.digits = String.copyValueOf(digits);
-		this.region = 116;
+		this.region = "116 RUS";
+	}
+
+	String getNumber() {
+		StringBuilder s = new StringBuilder(digits);
+		s.insert(0, letters.charAt(0));
+		s.append(letters.charAt(1));
+		s.append(letters.charAt(2));
+		s.append(" ");
+		s.append(region);
+		return s.toString();
 	}
 
 	public Long getId() {
@@ -29,11 +39,11 @@ public class Number {
 		this.id = id;
 	}
 
-	public char[] getLetters() {
+	public String getLetters() {
 		return letters;
 	}
 
-	public void setLetters(char[] letters) {
+	public void setLetters(String letters) {
 		this.letters = letters;
 	}
 
@@ -45,11 +55,11 @@ public class Number {
 		this.digits = digits;
 	}
 
-	public int getRegion() {
+	public String getRegion() {
 		return region;
 	}
 
-	public void setRegion(int region) {
+	public  void setRegion(String region) {
 		this.region = region;
 	}
 }

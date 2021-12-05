@@ -53,6 +53,9 @@ class LoadDatabase {
 				}
 				initBase.add(new Number(letters, digits));
 			}
+			digits[0] = '0';
+			digits[1] = '0';
+			digits[2] = '0';
 		}
 		numberRepository.saveAll(initBase);
 		return args -> log.info("DataBase created.");
