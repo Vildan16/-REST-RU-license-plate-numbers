@@ -13,6 +13,7 @@ public class Number {
 	private String digits;
 	private String region;
 
+
 	protected Number() {}
 
 	Number(char[] letters, char[] digits) {
